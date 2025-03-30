@@ -10,6 +10,7 @@ else idToGoBack = idToGo + 1
 <div
   class={`
     min-h-[80vh]
+    h-screen
     flex
     flex-col
     items-center
@@ -34,7 +35,7 @@ else idToGoBack = idToGo + 1
         shadow-acid-green/50 
         p-1
         px-2
-        lg:p-2
+        lg:p-0
         max-w-2xl
         lg:max-w-full
       `
@@ -64,7 +65,7 @@ else idToGoBack = idToGo + 1
   >
     <a href=`#${idToGoBack}`>
       <img src="/icons/arrow-up.svg" class="max-w-12" />
-      <p class="text-sm">{idToGo === 1 ? "Bottom" : "Previous"}</p>
+      <p class="text-sm text-center">{idToGo === 1 ? "Bottom" : "Previous"}</p>
     </a>
     <a href=`#${idToGo}`>
       <img src="/icons/arrow-down.svg" class="max-w-12" />
