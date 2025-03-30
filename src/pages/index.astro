@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Mecard from "../components/mecard.astro"
+import Links from '../components/links.astro';
+---
+
+<Layout
+	title="EC - Portfolio"
+>
+	<div id="0"></div>
+	<Mecard idToGo={1} />
+	<div id="1"></div>
+	<Mecard idToGo={2} />
+	<div id="2"></div>
+	<Mecard idToGo={0} />
+
+	<Links />
+</Layout>

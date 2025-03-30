@@ -1,0 +1,49 @@
+---
+import "../styles/global.css"
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<!-- <img id="bg" src="/background.svg" /> -->
+		<slot />
+	</body>
+</html>
+
+<style>
+	html,
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: "Big Shoulders Text";
+		background-color: black;
+		color: white;
+	}
+
+	/* #bg {
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		filter: blur(100px);
+	} */
+</style>

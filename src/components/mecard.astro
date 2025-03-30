@@ -1,0 +1,70 @@
+---
+import Melayout from "../layouts/Melayout.astro";
+
+const { idToGo } = Astro.props
+
+let idToGoBack
+
+if(idToGo >= 2) idToGoBack = idToGo - 2
+else idToGoBack = idToGo + 1
+---
+
+<Melayout
+  idToGo={idToGo}
+>
+  <div
+    class=`
+      flex
+      flex-col
+      lg:flex-row
+    `
+  >
+  <div
+    class="w-full"
+  >
+
+    
+    <div
+      class=`
+        text-center
+      `
+    >
+      <h1 class="text-3xl lg:text-5xl text-acid-orange font-bold pb-2">
+        Ernesto Colmenares
+      </h1>
+      <h2 class=`text-xl lg:text-3xl text-acid-green`>
+        Full-Stack Javascript Developer
+      </h2>
+    </div>
+
+    <div
+      class=`
+        size-full
+        my-8
+        text-justify
+      `
+    >
+      <p class="text-xl lg:text-3xl">Soy un profesional técnico en desarrollo de software con 20 años de expiriencia en desarrollo web</p>
+      <p class="text-xl lg:text-3xl my-4">Hobbies:</p>
+      <ul class="list-disc">
+        <li class="text-md lg:text-2xl">Programar</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div
+    class=`
+      w-full
+      lg:my-20
+      lg:mx-10
+      flex
+      items-center
+      justify-center
+    `
+    >
+    <img src="/me.jpg" class=`w-3/4 lg:w-3/4 rounded-[2vw] grayscale` />
+  </div>
+</div>
+
+</Melayout>

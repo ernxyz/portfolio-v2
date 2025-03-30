@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Big Shoulders Text";
+  src: url("/fonts/big-shoulders.ttf");
+}
+
+@theme {
+  --font-big-shoulders: "Big Shoulders Text";
+  --color-acid-green: #00ff02;
+  --color-acid-orange: #ff7400;
+}

@@ -1,0 +1,68 @@
+---
+const { idToGo } = Astro.props
+
+let idToGoBack
+
+if(idToGo >= 2) idToGoBack = idToGo - 2
+else idToGoBack = idToGo + 1
+---
+
+<div
+  class={`
+    min-h-screen
+    max-h-screen
+    flex
+    flex-col
+    items-center
+    justify-center
+    m-5
+  `}
+>
+    <div
+      class=`
+        h-5/6
+        w-full
+        lg:w-3/4
+        bg-gray-800/40
+        rounded-[3vw]
+        flex
+        flex-col
+        lg:flex-row
+        shadow-2xl 
+        shadow-acid-green/50 
+        p-8
+        max-w-2xl
+        lg:max-w-full
+      `
+    >
+      <div class=`
+          lg:my-20
+          lg:ml-20
+          flex
+          flex-col
+          lg:w-full
+          mb-10
+        `
+      >
+ 
+      <slot />
+      
+    </div>
+</div>
+  <div
+    class=`
+      relative
+      bottom-0
+      text-xl
+      flex
+      `
+  >
+    <a href=`#${idToGoBack}`>
+      <img src="/icons/arrow-up.svg" class="max-w-12" />
+      <p class="text-sm">Anterior</p>
+    </a>
+    <a href=`#${idToGo}`>
+      <img src="/icons/arrow-down.svg" class="max-w-12" />
+      <p class="text-sm">Siguiente</p>
+    </a>
+  </div>
