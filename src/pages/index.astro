@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Mecard from "../components/mecard.astro"
 import Links from '../components/links.astro';
+import Techcard from '../components/techcard.astro';
+import Projectscard from '../components/projectscard.astro';
 ---
 
 <Layout
@@ -10,9 +12,34 @@ import Links from '../components/links.astro';
 	<div id="0"></div>
 	<Mecard idToGo={1} />
 	<div id="1"></div>
-	<Mecard idToGo={2} />
+	<Techcard idToGo={2} />
 	<div id="2"></div>
-	<Mecard idToGo={0} />
+	<Projectscard idToGo={0} />
 
 	<Links />
 </Layout>
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("links-container");
+    if (!container) return;
+    
+    let lastScroll = 0;
+    
+    window.addEventListener("scroll", () => {
+      let currentScroll = window.pageYOffset;
+      
+      if (currentScroll > lastScroll) {
+        container.classList.add("hidden");
+        container.classList.add("lg:block");
+        container.classList.remove("block");
+      } else {
+        container.classList.add("block");
+        container.classList.remove("hidden");
+      }
+      
+      lastScroll = currentScroll;
+    });
+  });
+</script>

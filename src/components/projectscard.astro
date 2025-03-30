@@ -1,0 +1,98 @@
+---
+import Melayout from "../layouts/Melayout.astro";
+
+const { idToGo } = Astro.props
+
+let idToGoBack
+
+if(idToGo >= 2) idToGoBack = idToGo - 2
+else idToGoBack = idToGo + 1
+---
+
+<Melayout
+  idToGo={idToGo}
+>
+  <div
+    class=`
+      lg:flex-row
+      flex
+      flex-col
+      items-center
+      justify-center
+    `
+  >
+  <div
+    class="w-full"
+  >
+
+    
+    <div
+      class=`
+        text-center
+      `
+    >
+      <h1 class="text-3xl lg:text-5xl text-acid-orange font-bold pb-2">
+        Latest Projects
+      </h1>
+      <!-- <h2 class=`text-xl lg:text-3xl text-acid-green`>
+        Full-Stack Javascript Developer
+      </h2> -->
+    </div>
+
+    <div
+      class=`
+        size-full
+        my-8
+        text-justify
+      `
+    >
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Project Card 1 -->
+        <div class="bg-gray-900 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 flex flex-col">
+          <img src="/projects/negozi.png" alt="Project 1 Logo" class="w-24 h-24 mx-auto mb-4 rounded-lg">
+          <h3 class="text-2xl text-acid-green font-semibold text-center mb-3">Negozi</h3>
+          <p class="text-gray-400 text-center flex-grow">
+            It is an app to boost local commerce, especially for offers and deals, based in Venezuela. Built with React, Zustand, MUI, Supabase, Deno, Hono.js.
+          </p>
+          <div class="mt-4 flex justify-center space-x-4">
+            <button disabled class="text-gray-300">GitHub Private</button>
+            <a href="https://negozi.lat" target="_blank" class="text-acid-green hover:underline">Live Demo</a>
+          </div>
+        </div>
+
+    
+        <!-- Project Card 2 -->
+        <div class="bg-gray-900 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 flex flex-col">
+          <img src="/projects/bistrapp.jpeg" alt="Project 2 Logo" class="w-24 h-24 mx-auto mb-4 rounded-lg">
+          <h3 class="text-2xl text-acid-green font-semibold text-center mb-3">Bistrapp</h3>
+          <p class="text-gray-400 text-center flex-grow">
+            It is an app that allows restaurants to get a QR code so customers are able to download their digital menu. Built with Astro, Preact, Tailwind CSS, Daisy UI, Appwrite and Bun.js.
+          </p>
+          <div class="mt-4 flex justify-center space-x-4">
+            <button disabled class="text-gray-300">GitHub Private</button>
+            <a href="https://bistrapp.negozi.lat" target="_blank" 
+              class="text-acid-green hover:underline">Live Demo</a>
+          </div>
+        </div>
+    
+        <!-- Project Card 3 -->
+        <div class="bg-gray-900 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 flex flex-col">
+          <img src="/projects/random-epi.png" alt="Project 3 Logo" class="w-24 h-24 mx-auto mb-4 rounded-lg">
+          <h3 class="text-2xl text-acid-green font-semibold text-center mb-3">Random Episodes</h3>
+          <p class="text-gray-400 text-center flex-grow">
+            It is an app that allows users to look for their favorite TV shows and get a random episode of it as a recommendation. Useful when you want to rewatch your favorite shows and can’t decide on a specific episode.
+          </p>
+          <div class="mt-4 flex justify-center space-x-4">
+            <a href="https://github.com/ernxyz/tv-shows" target="_blank" 
+              class="text-acid-green hover:underline">GitHub</a>
+            <a href="https://random-episodes.onrender.com" target="_blank" 
+              class="text-acid-green hover:underline">Live Demo</a>
+          </div>
+        </div>
+      </div>
+        
+    </div>
+  </div>
+</div>
+
+</Melayout>

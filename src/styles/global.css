@@ -10,3 +10,7 @@
   --color-acid-green: #00ff02;
   --color-acid-orange: #ff7400;
 }
+
+* {
+  user-select: none;
+}
