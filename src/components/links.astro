@@ -1,52 +1,122 @@
 <div
   id="links-container"
-  class=`
-    fixed
-    left-1/2
-    md:left-0
-    top-0
-    md:top-[40%]
-    transform -translate-x-1/2
-    ring-4
-    mt-4
-    sm:ml-8
-    rounded
-  `
+  class="fixed left-1/2 md:left-0 top-0 md:top-[40%] transform -translate-x-1/2 md:translate-x-0 z-50"
 >
-
+  <!-- Glow effect behind the container -->
+  <div class="absolute -inset-1 bg-gradient-to-r from-acid-green/30 to-acid-orange/30 rounded-full blur-md opacity-30"></div>
+  
   <ul
-    class=`
-      bg-gray-800/40
-      flex
-      md:flex-col
-      md:items-center
-    `
+    class="bg-gray-900/60 backdrop-blur-sm flex md:flex-col md:items-center rounded-full border border-gray-700/50 shadow-lg p-1 relative"
   >
-    <li>
-      <a target="_blank" href="mailto:ernesto@negozi.lat">
-        <i class="fas fa-envelope"></i>
+    <li class="group">
+      <a 
+        target="_blank" 
+        href="mailto:ernesto@negozi.lat"
+        class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 relative"
+        aria-label="Email"
+      >
+        <!-- Hover glow effect -->
+        <span class="absolute inset-0 rounded-full bg-acid-green/0 group-hover:bg-acid-green/20 transition-colors duration-300"></span>
+        
+        <!-- Icon with hover animation -->
+        <i class="fas fa-envelope text-acid-green/80 group-hover:text-acid-green transition-all duration-300 group-hover:scale-110"></i>
+        
+        <!-- Tooltip -->
+        <span class="absolute left-full ml-2 px-2 py-1 bg-gray-900/90 text-acid-green text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none hidden md:block">
+          Email
+        </span>
       </a>
     </li>
-    <li>
-      <a target="_blank" href="https://github.com/ernxyz">
-        <i class="fa-brands fa-github"></i>
+    
+    <li class="group">
+      <a 
+        target="_blank" 
+        href="https://github.com/ernxyz"
+        class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 relative"
+        aria-label="GitHub"
+      >
+        <span class="absolute inset-0 rounded-full bg-acid-green/0 group-hover:bg-acid-green/20 transition-colors duration-300"></span>
+        <i class="fa-brands fa-github text-acid-green/80 group-hover:text-acid-green transition-all duration-300 group-hover:scale-110"></i>
+        <span class="absolute left-full ml-2 px-2 py-1 bg-gray-900/90 text-acid-green text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none hidden md:block">
+          GitHub
+        </span>
       </a>
     </li>
-    <li>
-      <a target="_blank" href="https://www.linkedin.com/in/ernesto-colmenares-524954258">
-        <i class="fa-brands fa-linkedin"></i>
+    
+    <li class="group">
+      <a 
+        target="_blank" 
+        href="https://www.linkedin.com/in/ernesto-colmenares-524954258"
+        class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 relative"
+        aria-label="LinkedIn"
+      >
+        <span class="absolute inset-0 rounded-full bg-acid-green/0 group-hover:bg-acid-green/20 transition-colors duration-300"></span>
+        <i class="fa-brands fa-linkedin text-acid-green/80 group-hover:text-acid-green transition-all duration-300 group-hover:scale-110"></i>
+        <span class="absolute left-full ml-2 px-2 py-1 bg-gray-900/90 text-acid-green text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none hidden md:block">
+          LinkedIn
+        </span>
       </a>
     </li>
-    <li>
-      <a target="_blank" href="https://discord.com/users/666757033575448621">
-        <i class="fa-brands fa-discord"></i>
+    
+    <li class="group">
+      <a 
+        target="_blank" 
+        href="https://discord.com/users/666757033575448621"
+        class="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 relative"
+        aria-label="Discord"
+      >
+        <span class="absolute inset-0 rounded-full bg-acid-green/0 group-hover:bg-acid-green/20 transition-colors duration-300"></span>
+        <i class="fa-brands fa-discord text-acid-green/80 group-hover:text-acid-green transition-all duration-300 group-hover:scale-110"></i>
+        <span class="absolute left-full ml-2 px-2 py-1 bg-gray-900/90 text-acid-green text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none hidden md:block">
+          Discord
+        </span>
       </a>
     </li>
   </ul>
+  
+  <!-- Mobile indicator dot -->
+  <div class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-acid-green rounded-full md:hidden"></div>
 </div>
 
 <style>
-  li {
-    padding: 1vh;
+  /* Subtle floating animation */
+  #links-container {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translate(-50%, 0) translateY(0px);
+    }
+    50% {
+      transform: translate(-50%, 0) translateY(-10px);
+    }
+    100% {
+      transform: translate(-50%, 0) translateY(0px);
+    }
+  }
+  
+  /* Desktop animation adjustment */
+  @media (min-width: 768px) {
+    #links-container {
+      animation: float-desktop 6s ease-in-out infinite;
+    }
+    
+    @keyframes float-desktop {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+  }
+  
+  /* Ensure icons are properly sized */
+  .fas, .fa-brands {
+    font-size: 1.25rem;
   }
 </style>

@@ -1,73 +1,100 @@
 ---
-const { idToGo } = Astro.props
+const { idToGo } = Astro.props;
 
-let idToGoBack
+let idToGoBack;
 
-if(idToGo >= 2) idToGoBack = idToGo - 2
-else idToGoBack = idToGo + 1
+if (idToGo >= 2) idToGoBack = idToGo - 2;
+else idToGoBack = idToGo + 1;
 ---
 
-<div
-  class={`
-    flex
-    flex-col
-    items-center
-    justify-center
-    m-5
-    mt-16
-    lg:mt-5
-    overflow-x-hidden
-    overflow-y-hidden
-  `}
->
-    <div
-      class=`
-        w-full
-        lg:w-3/4
-        bg-gray-800/40
-        rounded-[3vw]
-        flex
-        flex-col
-        lg:flex-row
-        shadow-2xl 
-        shadow-acid-green/50 
-        p-1
-        px-2
-        lg:p-0
-        max-w-2xl
-        lg:max-w-full
-      `
-    >
-      <div class=`
-          pt-5
-          lg:my-20
-          lg:mx-20
-          flex
-          flex-col
-          lg:w-full
-          mb-5
-          lg:h-[65vh]
-        `
-      >
- 
-      <slot />
-      
-    </div>
-</div>
+<div class="min-h-screen flex flex-col justify-between py-4 px-4 lg:px-8 overflow-hidden relative">
+  <!-- Animated background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black -z-10 opacity-80"></div>
+  <div class="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] -z-10"></div>
+  
+  <!-- Animated accent lines -->
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-acid-green/30 to-transparent"></div>
+  <div class="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-acid-orange/30 to-transparent"></div>
+  
+  <!-- Main content container - FIXED: Border positioning -->
   <div
-    class=`
-      relative
-      bottom-0
-      text-xl
-      flex
-      `
+    class="w-full max-w-7xl mx-auto bg-gray-900/60 md:backdrop-blur-sm rounded-2xl md:rounded-[1.5vw] 
+           shadow-[0_0_25px_rgba(0,0,0,0.3)] border border-gray-800/50
+           flex-grow relative overflow-hidden transition-all duration-500 ease-out hover:shadow-acid-green/20"
   >
-    <a href=`#${idToGoBack}`>
-      <img src="/icons/arrow-up.svg" class="max-w-12" />
-      <p class="text-sm text-center">{idToGo === 1 ? "Bottom" : "Previous"}</p>
+    <!-- Corner accents - FIXED: Moved outside the scrollable area -->
+    <div class="absolute top-0 left-0 w-12 md:w-16 h-12 md:h-16 border-t-2 border-l-2 border-acid-green/30 rounded-tl-2xl md:rounded-tl-[1.5vw] z-10"></div>
+    <div class="absolute top-0 right-0 w-12 md:w-16 h-12 md:h-16 border-t-2 border-r-2 border-acid-green/30 rounded-tr-2xl md:rounded-tr-[1.5vw] z-10"></div>
+    <div class="absolute bottom-0 left-0 w-12 md:w-16 h-12 md:h-16 border-b-2 border-l-2 border-acid-green/30 rounded-bl-2xl md:rounded-bl-[1.5vw] z-10"></div>
+    <div class="absolute bottom-0 right-0 w-12 md:w-16 h-12 md:h-16 border-b-2 border-r-2 border-acid-green/30 rounded-br-2xl md:rounded-br-[1.5vw] z-10"></div>
+    
+    <!-- FIXED: Scrollable content area with padding to avoid overlapping with corner accents -->
+    <div class="h-[70vh] md:h-auto md:min-h-[80vh] p-6 lg:p-8 overflow-auto scrollbar-thin scrollbar-thumb-acid-green/30 scrollbar-track-transparent">
+      <slot />
+    </div>
+  </div>
+  
+  <!-- Fixed navigation with enhanced styling -->
+  <div class="flex justify-center gap-16 mt-6 w-full relative z-10">
+    <a 
+      href={`#${idToGoBack}`}
+      class="group relative"
+      aria-label={idToGo === 1 ? "Go to bottom" : "Go to previous section"}
+    >
+      <div class="absolute -inset-3 bg-gradient-to-r from-acid-green/0 via-acid-green/20 to-acid-green/0 rounded-full opacity-0 md:blur-md group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div class="bg-gray-800/90 p-4 rounded-full shadow-lg border border-gray-700/50
+                  transform transition-all duration-300 ease-out
+                  group-hover:shadow-acid-green/30 group-hover:scale-110 group-hover:border-acid-green/30
+                  relative">
+        <img src="/icons/arrow-up.svg" class="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-0.5" alt="Previous" />
+      </div>
+      <p class="text-sm text-center mt-2 text-acid-green/80 opacity-80 group-hover:opacity-100 transition-opacity">
+        {idToGo === 1 ? "Bottom" : "Previous"}
+      </p>
     </a>
-    <a href=`#${idToGo}`>
-      <img src="/icons/arrow-down.svg" class="max-w-12" />
-      <p class="text-sm text-center">{idToGo === 0 ? "Top" : "Next"}</p>
+    <a 
+      href={`#${idToGo}`}
+      class="group relative"
+      aria-label={idToGo === 0 ? "Go to top" : "Go to next section"}
+    >
+      <div class="absolute -inset-3 bg-gradient-to-r from-acid-green/0 via-acid-green/20 to-acid-green/0 rounded-full opacity-0 md:blur-md group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div class="bg-gray-800/90 p-4 rounded-full shadow-lg border border-gray-700/50
+                  transform transition-all duration-300 ease-out
+                  group-hover:shadow-acid-green/30 group-hover:scale-110 group-hover:border-acid-green/30
+                  relative">
+        <img src="/icons/arrow-down.svg" class="w-6 h-6 transition-transform duration-300 group-hover:translate-y-0.5" alt="Next" />
+      </div>
+      <p class="text-sm text-center mt-2 text-acid-green/80 opacity-80 group-hover:opacity-100 transition-opacity">
+        {idToGo === 0 ? "Top" : "Next"}
+      </p>
     </a>
   </div>
+</div>
+
+<style>
+  /* Custom scrollbar styling */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thumb-acid-green\/30::-webkit-scrollbar-thumb {
+    background-color: rgba(163, 230, 53, 0.3);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-track-transparent::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  /* Add subtle animation to background */
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .bg-gradient-to-br {
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+  }
+</style>
